@@ -9,7 +9,7 @@
     git pull origin master
     git checkout -b new_working_branch (use underscore as separator for consistency)
 
-  Take note that there are circumstances that you need to branch out from an existing feature branch (finished but still in the pull requests page) instead from the master branch. This happens because there might be some feature of that branch that you need instead of recreating them again.
+  Take note that there are circumstances that you need to branch out from an existing feature branch (finished but still in the pull requests page) instead from the master branch. This happens because there might be some features of the finished working branch that you need instead of recreating them to your working branch.
 
 #### Rebasing a Working Branch
   If there are changes that are not included in the commits, stash them.
