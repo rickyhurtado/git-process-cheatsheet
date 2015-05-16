@@ -1,34 +1,7 @@
 # GIT PROCESS CHEAT SHEET
 
-#### Note for Master Branch
-  The master branch shall be deployed to the production server. Use the master branch to create staging branch (as throw away branch) or feature or working branch. Also use the master branch in updating the staging or working branch.
-
-#### Note for Staging Branch
-  The staging branch shall be deployed to the staging or UAT server. Pull requests to the master branch shall be merged if the features are already accepted in the UAT. If some of the pull requests are merged to the master branch (and there are few shall be left on the pull requests page) and happens weekly, the staging branch shall be deleted and re-created. By doing this, we keep the the staging branch synced with the master branch as much as possible to avoid possible more merge conflicts.
-  
-  The following shall be done weekly in re-creating the staging branch given that there were pull requests merged to the master branch:
-  
-    git checkout master
-    git pull origin master
-    git branch -D staging (force delete local)
-    git push origin :staging (force delete remote)
-    git checkout -b staging (re-created the staging branch)
-    git push origin staging (then deploy the staging branch immediately to UAT server)
-  
-  The processes above do not include the working branches on the pull requests page. These branches shall be rebased again with the master branch befire merging them to the staging for UAT. Let's say that the working_branch is one of the branches in the pull requests, do the following:
-  
-    git checkout working_branch
-    git rebase master (fix all conflicts if there's any)
-    git push working_branch
-    git checkout staging
-    git pull --rebase origin staging (fix all conflicts if there's any)
-    git merge working_branch (fix all conflicts if there's any)
-    git push origin staging (if unable to push, just repeat the git pull --rebase origin staging process)
-  
-  Notify the person responsible for UAT and notify the person responsible to deploy the master branch to production server.
-
 #### Creating a Staging or Working Branch
-  Always update the master labranch before creating a new working branch or rebasing it to a working branch or re-creating the staging branch.
+  Always update the master branch before creating a new working branch or rebasing it to a working branch or re-creating the staging branch.
 
   Creating a new staging or working branch:
 
@@ -91,6 +64,33 @@
   Pull request happens if there is a working branch ready for production. Pull requests can be merged only if they pass in the UAT. For some reasons, the working branch might be behind with the recent commits of the master branch and merging is not possible despite that the working branch was previously synced with the maste branch. If this happens, rebase again master branch to working branch by repeating the Rebasing a Working Branch section. The owner of the working branch shall be responsible in syncing with the master branch or merging it to master branch. Those who has permission can deploy the master or staging branch to the server.
   
   All branches that are merged to master shall be deleted. After the merging of pull request, see the Updating the Local Branches section.
+
+#### Note for the Master Branch
+  The master branch shall be deployed to the production server. Use the master branch to create staging branch (as throw away branch) or feature or working branch. Also use the master branch in updating the staging or working branch.
+
+#### Note for the Staging Branch
+  The staging branch shall be deployed to the staging or UAT server. Pull requests to the master branch shall be merged if the features are already accepted in the UAT. If some of the pull requests are merged to the master branch (and there are few shall be left on the pull requests page) and happens weekly, the staging branch shall be deleted and re-created. By doing this, we keep the the staging branch synced with the master branch as much as possible to avoid possible more merge conflicts.
+  
+  The following shall be done weekly in re-creating the staging branch given that there were pull requests merged to the master branch:
+  
+    git checkout master
+    git pull origin master
+    git branch -D staging (force delete local)
+    git push origin :staging (force delete remote)
+    git checkout -b staging (re-created the staging branch)
+    git push origin staging (then deploy the staging branch immediately to UAT server)
+  
+  The processes above do not include the working branches on the pull requests page. These branches shall be rebased again with the master branch before merging them to the staging for UAT. Let's say that the working_branch is one of the branches in the pull requests, do the following:
+  
+    git checkout working_branch
+    git rebase master (fix all conflicts if there's any)
+    git push working_branch
+    git checkout staging
+    git pull --rebase origin staging (fix all conflicts if there's any)
+    git merge working_branch (fix all conflicts if there's any)
+    git push origin staging (if unable to push, just repeat the git pull --rebase origin staging process)
+  
+  Notify the person responsible for UAT and notify the person responsible to deploy the master branch to production server.
 
 #### Updating the Local Branches
   Sync the remote branches (origin/branches) in your local machine with the branches in the GIT server.
