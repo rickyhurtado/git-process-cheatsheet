@@ -9,6 +9,8 @@
     git pull origin master
     git checkout -b new_working_branch (use underscore as separator for consistency)
 
+  Take note that there are circumstances that you need to branch out from an existing feature branch (finished but still in the pull requests page) instead from the master branch. This happens because there might be some feature of that branch that you need instead of recreating them again.
+
 #### Rebasing a Working Branch
   If there are changes that are not included in the commits, stash them.
   
@@ -91,6 +93,14 @@
     git push origin staging (if unable to push, just repeat the git pull --rebase origin staging process)
   
   Notify the person responsible for UAT and notify the person responsible to deploy the master branch to production server.
+
+#### Note for the Working Branch
+  If there are two or more developers working on the same feature but different servers, let's say one for App (UI) and one for API (back end), the name of the working branch shall be the same for both App and API.
+  
+  If there are two or more developers working on the same branch for one server (whether App or API), the contributor shall branch out from the feature branch. Same process shall be applied to the original feature branch and the branch of the contributor (feature branch shall act as master branch and contributor's branch shall act as the feature branch). The lead developer of the feature branch shall accept the pull requests made by the contributor and also responsible for the pull request to the master branch and merging to the staging branch.
+  
+#### Note for Pull Request for App and API
+  Leave a comment to your pull request whether the App has dependency feature in API or vise versa. If there is a dependency feature on the same project, App for example, leave a comment about the dependency feature. An example of scenario is that the dependency feature shall be merged first before your working branch. This happens, if you branch out from a working feature rather than from master branch.
 
 #### Updating the Local Branches
   Sync the remote branches (origin/branches) in your local machine with the branches in the GIT server.
