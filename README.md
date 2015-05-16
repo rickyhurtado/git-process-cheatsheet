@@ -1,6 +1,6 @@
 # GIT PROCESS CHEAT SHEET
 
-## Note for Master Branch
+#### Note for Master Branch
   Use the master branch to create staging branch (as throw away branch) or feature or working branch. Also use the master branch in updating the staging or working branch.
 
 #### Creating a Staging or Working Branch
