@@ -15,7 +15,7 @@
     git checkout -b staging (re-created the staging branch)
     git push origin staging (then deploy the staging branch immediately to UAT server)
   
-  The processes above do not include the working branches on the pull requests page. These branches shall be rebase again with the master branch befire merging them to the staging for UAT. Let's say that the working_branch is one of the branches in the pull requests, do the following:
+  The processes above do not include the working branches on the pull requests page. These branches shall be rebased again with the master branch befire merging them to the staging for UAT. Let's say that the working_branch is one of the branches in the pull requests, do the following:
   
     git checkout working_branch
     git rebase master (fix all conflicts if there's any)
