@@ -4,9 +4,9 @@
   The master branch shall be deployed to the production server. Use the master branch to create staging branch (as throw away branch) or feature or working branch. Also use the master branch in updating the staging or working branch.
 
 #### Note for Staging Branch
-  The staging branch shall be deployed to the staging or UAT server. Pull requests to master branch shall be merged if the features are already accepted in the UAT. If some of the pull requests are merged to master branch (and there are few shall be left on the pull requests page) and happens weekly, the staging branch shall be deleted and re-created. By doing this, we keep the the staging branch synced with the master branch as much as possible to avoid possible more merge conflicts.
+  The staging branch shall be deployed to the staging or UAT server. Pull requests to the master branch shall be merged if the features are already accepted in the UAT. If some of the pull requests are merged to the master branch (and there are few shall be left on the pull requests page) and happens weekly, the staging branch shall be deleted and re-created. By doing this, we keep the the staging branch synced with the master branch as much as possible to avoid possible more merge conflicts.
   
-  The following shall be done weekly in re-creating the staging branch given that there were pull requests merged to master branch:
+  The following shall be done weekly in re-creating the staging branch given that there were pull requests merged to the master branch:
   
     git checkout master
     git pull origin master
@@ -15,7 +15,7 @@
     git checkout -b staging (re-created the staging branch)
     git push origin staging (then deploy the staging branch immediately to UAT server)
   
-  The processes above do not include the working branches on the pull requests page. These branches shall be rebase again with the master branch befire merging them to staging for UAT. Let's say that the working_branch is one of the branches in the pull requests, do the following:
+  The processes above do not include the working branches on the pull requests page. These branches shall be rebase again with the master branch befire merging them to the staging for UAT. Let's say that the working_branch is one of the branches in the pull requests, do the following:
   
     git checkout working_branch
     git rebase master (fix all conflicts if there's any)
