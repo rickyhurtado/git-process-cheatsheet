@@ -100,7 +100,9 @@
   If there are two or more developers working on the same branch for one server (whether App or API), the contributor shall branch out from the feature branch. Same process shall be applied to the original feature branch and the branch of the contributor (feature branch shall act as master branch and contributor's branch shall act as the feature branch). The lead developer of the feature branch shall accept the pull requests made by the contributor and also responsible for the pull request to the master branch and merging to the staging branch.
   
 #### Note for Pull Request for App and API
-  Leave a comment to your pull request whether the App has dependency feature in API or vise versa. If there is a dependency feature on the same project, App for example, leave a comment about the dependency feature. An example of scenario is that the dependency feature shall be merged first before your working branch. This happens, if you branch out from a working feature rather than from master branch.
+  Leave a comment to your pull request whether the App has dependency feature in API or vise versa.
+  
+  If there is a dependency feature on the same project, App for example, leave a comment about the dependency feature. An example of scenario is that the dependency feature must be merged first to the master branch before your working branch. This happens, if you branched out from a finished feature branch rather than from master branch (see Creating a Staging or Working Branch section).
 
 #### Updating the Local Branches
   Sync the remote branches (origin/branches) in your local machine with the branches in the GIT server.
